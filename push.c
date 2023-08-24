@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
-  * push - Adds a new node at the beginning of the stack
-  * @stack: The head of the stack
-  * @param: The value to adds on the stack
-  *
-  * Return: Nothing
-  */
+ * push - Adds a new node at the beginning of the stack
+ * @stack: Pointer to the head of the stack
+ * @param: The value to be added to the stack
+ *
+ * Return: Nothing
+ */
 void push(stack_t **stack, unsigned int param)
 {
 	stack_t *new_node = NULL;
@@ -31,12 +31,12 @@ void push(stack_t **stack, unsigned int param)
 }
 
 /**
-  * push_queue - Adds a new node at the end of the stack
-  * @stack: The head of the stack
-  * @param: The value to adds on the stack
-  *
-  * Return: Nothing
-  */
+ * push_queue - Adds a new node at the end of the stack
+ * @stack: Pointer to the head of the stack
+ * @param: The value to be added to the stack
+ *
+ * Return: void
+ */
 void push_queue(stack_t **stack, unsigned int param)
 {
 	stack_t *current = NULL, *new_node = NULL;
@@ -62,3 +62,4 @@ void push_queue(stack_t **stack, unsigned int param)
 	new_node->prev = NULL;
 	*stack = new_node;
 }
+
