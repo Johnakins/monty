@@ -1,15 +1,25 @@
 #include "monty.h"
-/**
- * pall - remove the memory
- * @stack: the stack of memories
- * Return: void
- */
-void pall(Stack *stack)
-{
-	int i;
 
-	for (i = stack->top - 1; i >= 0; i--)
+/**
+ * pall - Prints all the values on the stack,
+ * starting from the top of the stack.
+ * @stack: The head of the stack
+ * @line_number: The line on which the error occurred
+ *
+ * Return: Nothing
+ */
+void pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *cur = NULL;
+	(void) line_number;
+
+	if (*stack)
 	{
-		printf("%d\n", stack->data[i]);
+		current = *stack;
+		while (cur != NULL)
+		{
+			printf("%d\n", cur->n);
+			cur = cur->next;
+		}
 	}
 }
