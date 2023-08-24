@@ -77,7 +77,7 @@ int handle_execution(char *op_code, char *op_param, unsigned int line, int m);
 void handle_err(int errcode, char *op, unsigned int line_num, char *buff);
 void handle_com_err(int errcode, char *op, unsigned int line_num);
 void handle_use_err(int errcode, unsigned int line_num);
-void handle_more_use_error(int errcode, unsigned int line_num);
+void handle_more_use_err(int errcode, unsigned int line_num);
 void (*pick_func(char *s))(stack_t **, unsigned int);
 unsigned int count_stack(stack_t *stack);
 void push(stack_t **stack, unsigned int param);

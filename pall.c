@@ -15,7 +15,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	if (*stack)
 	{
-		current = *stack;
+		cur = *stack;
 		while (cur != NULL)
 		{
 			printf("%d\n", cur->n);

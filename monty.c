@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 stack_t *stack_head = NULL;
 
@@ -14,14 +15,15 @@ int main(int argc, char *argv[])
 	FILE *file_ptr = NULL;
 	size_t line_length = 0;
 	unsigned int line_number = 1;
-	int chars_read = 0, opcode_status = 0;
+	int chars_read;
+	int opcode_status = 0;
 	char *file_name = NULL, *opcode = NULL, *op_param = NULL, *buffer = NULL;
 
 	file_name = argv[1];
 	check_args_num(argc);
 	file_ptr = open_file(file_name);
-
-	while ((chars_read = getline(&buffer, &line_length, file_ptr)) != -1)
+	chars_read = getline(&buffer, &line_length, file_ptr);
+	while (chars_read != -1)
 	{
 		opcode = strtok(buffer, "\t\n ");
 		if (opcode)
@@ -38,16 +40,15 @@ int main(int argc, char *argv[])
 			if (opcode_status >= 100 && opcode_status < 300)
 			{
 				fclose(file_ptr);
-				handle_error(opcode_status, opcode, line_number, buffer);
+				handle_err(opcode_status, opcode, line_number, buffer);
 			}
 		}
 
 		++line_number;
 	}
 
-	free_stack();
+	frees_stack();
 	free(buffer);
 	fclose(file_ptr);
 	return (0);
 }
-
