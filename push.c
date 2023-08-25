@@ -1,16 +1,44 @@
 #include "monty.h"
 /**
- * push - removes a memory
- * @stack: the pointer
- * @value: the values of the memory
- * Return: void
+ * f_push - func to add node to the stack
+ * @head: stack head
+ * @counter: line_number
+ * Return: return void
  */
-void push(Stack *stack, int value)
+void f_push(stack_t **head, unsigned int counter)
 {
-	if (stack->top == STACK_SIZE)
+	int n, k = 0, flag = 0;
+
+	if (bus.arg)
 	{
-		fprintf(stderr, "Stack overflow\n");
+		if (bus.arg[0] == '-')
+			k++;
+		for (; bus.arg[k] != '\0'; k++)
+		{
+			if (bus.arg[k] > 57 || bus.arg[k] < 48)
+				flag = 1;
+		}
+		if (flag == 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", counter);
+			fclose(bus.file);
+			free(bus.content);
+			free_stack(*head);
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	stack->data[stack->top++] = value;
+	n = atoi(bus.arg);
+	if (bus.lifi == 0)
+		addnode(head, n);
+	else
+		addqueue(head, n);
 }
+

@@ -1,19 +1,32 @@
-#include  "monty.h"
+#include "monty.h"
 /**
- * swap - swaps an element
- * @stack: the stack of memories
- * Return: void
+ * f_swap - func to adds the top two elements of the stack.
+ * @head: stack head
+ * @counter: line_number
+ * Return: return nothing
  */
-void swap(Stack *stack)
+void f_swap(stack_t **head, unsigned int counter)
 {
-	int temp;
+	stack_t *h;
+	int len = 0, auxil;
 
-	if (stack->top < 2)
-	{                                 
-		fprintf(stderr, "L%d: can't swap, stack too short\n", __LINE__);
+	h = *head;
+	while (h)
+	{
+		h = h->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	temp = stack->data[stack->top - 1];
-	stack->data[stack->top - 1] =stack->data[stack->top -2];
-	stack->data[stack->top - 2] = temp;
+	h = *head;
+	auxil = h->n;
+	h->n = h->next->n;
+	h->next->n = auxil;
 }
+

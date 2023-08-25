@@ -1,15 +1,21 @@
 #include "monty.h"
 /**
- * pall - remove the memory
- * @stack: the stack of memories
- * Return: void
+ * f_pall - func to prints the stack
+ * @head: stack head
+ * @counter: no used
+ * Return: no return (void)
  */
-void pall(Stack *stack)
+void f_pall(stack_t **head, unsigned int counter)
 {
-	int i;
+	stack_t *h;
+	(void)counter;
 
-	for (i = stack->top - 1; i >= 0; i--)
+	h = *head;
+	if (h == NULL)
+		return;
+	while (h)
 	{
-		printf("%d\n", stack->data[i]);
+		printf("%d\n", h->n);
+		h = h->next;
 	}
 }

@@ -1,15 +1,20 @@
 #include "monty.h"
 /**
- * pint - print the value of the top of the stack
- * @stack: the stack of memories
- * Return: void
+ * f_pint - func to prints the top
+ * @head: stack head
+ * @counter: line_number
+ * Return: no return (void)
  */
-void pint(Stack *stack)
+void f_pint(stack_t **head, unsigned int counter)
 {
-	if (stack->top == 0)
+	if (*head == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", __LINE__);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", stack->data[stack->top - 1]);
+	printf("%d\n", (*head)->n);
 }
+
